@@ -1,73 +1,55 @@
-import json
-import os
+# 도서 관리 프로그램
 
-FILE_NAME = "books.json"
+# 책 저장 함수
+def add_book():
+    title = input("책 제목: ")
+    author = input("저자: ")
+    price = input("가격: ")
+
+    with open("books.txt", "a", encoding="utf-8") as file:
+        file.write(f"{title},{author},{price}\n")
+
+    print("책 정보가 저장되었습니다.")
 
 
-class BookManager:
-    def __init__(self):
-        self.books = []
-        self.load_books()
-
-    def add_book(self, title, author, price):
-        book = {
-            "title": title,
-            "author": author,
-            "price": price
-        }
-        self.books.append(book)
-        self.save_books()
-        print("도서가 저장되었습니다.")
-
-    def save_books(self):
-        with open(FILE_NAME, "w", encoding="utf-8") as file:
-            json.dump(self.books, file, ensure_ascii=False, indent=4)
-
-    def load_books(self):
-        if os.path.exists(FILE_NAME):
-            with open(FILE_NAME, "r", encoding="utf-8") as file:
-                self.books = json.load(file)
-
-    def show_books(self):
-        if not self.books:
-            print("등록된 도서가 없습니다.")
-            return
-
-        print("\n=== 도서 목록 ===")
-        for i, book in enumerate(self.books, start=1):
-            print(f"{i}. 제목 : {book['title']}")
-            print(f"   저자 : {book['author']}")
-            print(f"   가격 : {book['price']}원")
-            print("-" * 30)
+# 메뉴 화면
+def show_menu():
+    print("\n===== 도서 관리 프로그램 =====")
+    print("1. 책 추가")
+    print("2. 책 조회")
+    print("3. 책 검색")
+    print("4. 책 삭제")
+    print("0. 프로그램 종료")
 
 
 def main():
-    manager = BookManager()
-
     while True:
-        print("\n===== 도서 관리 =====")
-        print("1. 도서 추가")
-        print("2. 도서 목록 조회")
-        print("3. 종료")
+        show_menu()
 
-        menu = input("메뉴 선택: ")
+        choice = input("메뉴 선택 >> ")
 
-        if menu == "1":
-            title = input("도서명: ")
-            author = input("저자: ")
-            price = int(input("가격: "))
-            manager.add_book(title, author, price)
+        if choice == "1":
+            add_book()      # 저장 기능 연결
 
-        elif menu == "2":
-            manager.show_books()
+        elif choice == "2":
+            print("책 조회 기능 실행")
+            # view_books() 연결 예정
 
-        elif menu == "3":
+        elif choice == "3":
+            print("책 검색 기능 실행")
+            # search_book() 연결 예정
+
+        elif choice == "4":
+            print("책 삭제 기능 실행")
+            # delete_book() 연결 예정
+
+        elif choice == "0":
             print("프로그램을 종료합니다.")
             break
 
         else:
-            print("잘못된 입력입니다.")
+            print("잘못된 입력입니다. 다시 선택해주세요.")
 
 
-if __name__ == "__main__":
-    main()
+# 프로그램 실행
+main()
