@@ -1,0 +1,48 @@
+.camera-tools/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.cache/
+/data/
+/datasets/
+outputs/
+checkpoints/
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.parquet
+*.mp4
+*.mov
+*.MOV
+*.rrd
+*.zip
+*.tar
+*.gz
+tmp/
+*.jpg
+*.jpeg
+*.png
+*.mjpg
+*.log
+*.lock
+*.tmp
+*.request
+# Logs, status files, locks and stop requests written by launchers and servers.
+/runtime/
+studio/performance-recovery/*training*.json
+*.before-*
+.DS_Store
+Thumbs.db
+# Current-machine calibration copies; tracked reference copies live in config/.
+/SO101 Follower-calibration.json
+/SO101 Leader-calibration.json
