@@ -104,7 +104,7 @@ class Handler(BaseHTTPRequestHandler):
                         with urlopen(f'http://127.0.0.1:{port}/health',timeout=3) as r: cameras[name]=json.load(r)
                     except Exception as exc: cameras[name]={'ok':False,'error':str(exc)}
                 return self.reply({'ok':all(c['ok'] for c in cameras.values()),'cameras':cameras})
-            path=dataset(q.get('repo','se4nchoi/messi'))
+            path=dataset(q.get('repo','chaern/messi'))
             if url.path=='/api/episodes':
                 return self.reply({'info':media.read_info(path),'cameras':media.list_cameras(path),
                     'revision':revision(path),'can_restore':undo_available(CACHE,q['repo'],path),
@@ -188,7 +188,7 @@ class Handler(BaseHTTPRequestHandler):
                     if worker and worker.is_alive():raise ValueError('이미 연결돼 있습니다. 데이터셋 변경 전 연결을 해제하세요.')
                     from intel7_vla.recording.recorder import Recorder,blueprint
                     import rerun as rr
-                    repo=body.get('repo','se4nchoi/messi');path=dataset(repo)
+                    repo=body.get('repo','chaern/messi');path=dataset(repo)
                     task=str(body.get('task','')).strip()
                     if not task:raise ValueError('작업 설명을 입력하세요.')
                     app=Recorder(demo=DEMO,dataset_root=path,repo_id=repo,task=task)

@@ -27,7 +27,7 @@ winget install --id dorssel.usbipd-win -e
 | Windows Python | 사용자 홈의 `.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python[w].exe` | `windows/start.ps1`, `install-camera-bridge.ps1`, `start-field-camera.ps1`, `start-camera-relay.ps1` |
 | Leader / Follower 시리얼 | `5B90149145` / `5B90150163` | `windows/start.ps1`, `wsl/prepare-wsl.sh`, `src/intel7_vla/recording/recorder.py`, `wsl/record.sh` 등 |
 | 카메라 장치명 | `icspring camera` / `USB HD` | `src/intel7_vla/platforms/windows/camera_server.py`, `windows/start-field-camera.ps1` |
-| 데이터셋 | `se4nchoi/messi` | Dataset Desk에서 변경, CLI는 해당 스크립트 확인 |
+| 데이터셋 | `chaern/messi` | Dataset Desk에서 변경, CLI는 해당 스크립트 확인 |
 
 Windows Python은 직접 설치한 Python 경로로 바꾸면 됩니다. Codex 설치는 필요하지 않습니다. 경로 변경 대상을 찾는 PowerShell 예시:
 

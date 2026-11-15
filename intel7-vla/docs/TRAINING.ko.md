@@ -2,7 +2,7 @@
 
 2026-10-23 현재 시연을 사용해 로컬 WSL GPU 학습을 시작했습니다. Hugging Face 클라우드 학습이나 Hub 업로드는 실행하지 않습니다.
 
-- 데이터: `se4nchoi/messi`, 10개 에피소드, 7,840프레임, 30fps, 카메라 2대
+- 데이터: `chaern/messi`, 10개 에피소드, 7,840프레임, 30fps, 카메라 2대
 - 분리: 에피소드 0~7 학습(6,529프레임), 8~9 검증(1,311프레임)
 - 모델: `lerobot/smolvla_base`, revision `5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6`
 - 설정: CUDA, BF16 autocast, batch 4, worker 2, 2,000스텝, warmup 200, 체크포인트/검증 500스텝 간격

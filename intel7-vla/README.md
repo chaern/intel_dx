@@ -2,7 +2,9 @@
 
 SO-101 Leader/Follower로 시연을 수집하고 영상·관절 데이터를 확인하여 ACT/SmolVLA 학습과 추후 로봇 실행 실험에 활용하는 팀 프로젝트입니다. Windows와 WSL 코드를 하나의 저장소에서 관리합니다.
 
-현재 작업은 **빨간 공을 집고, 집은 위치에서 왼쪽/오른쪽의 열린 경로를 판단해 두 콘 사이로 굴리거나 슛해서 득점하기**입니다. 기본 데이터셋은 `se4nchoi/messi`입니다.
+현재 작업은 **빨간 공을 집고, 집은 위치에서 왼쪽/오른쪽의 열린 경로를 판단해 두 콘 사이로 굴리거나 슛해서 득점하기**입니다. 기본 데이터셋은 `chaern/messi`입니다.
+
+기존 시연을 재생하거나 학습에 사용하려면 데이터셋을 새 기본 경로 ~/.cache/huggingface/lerobot/chaern/messi에 준비하거나, 기존 데이터가 있는 경로를 실행 설정에서 지정하세요.
 
 > Pick up the red ball, identify the open lane to the left or right of the pickup location, and roll or shoot the ball between the two cones to score a goal.
 

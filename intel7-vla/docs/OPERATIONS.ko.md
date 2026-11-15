@@ -52,8 +52,8 @@ Dataset Desk는 http://localhost:8877 에서 실행합니다. `데이터셋` 탭
 
 ### 현재 작업: messi
 
-- 저장 위치: `/home/user/.cache/huggingface/lerobot/se4nchoi/messi`
-- 데이터셋 ID: `se4nchoi/messi`
+- 저장 위치: `/home/user/.cache/huggingface/lerobot/chaern/messi`
+- 데이터셋 ID: `chaern/messi`
 - 작업: 빨간 공 집기 → 집은 위치를 기준으로 열린 왼쪽/오른쪽 경로 판단 → 두 콘 사이로 굴리거나 슛해서 득점.
 - 기록할 task 문장: `Pick up the red ball, identify the open lane to the left or right of the pickup location, and roll or shoot the ball between the two cones to score a goal.`
 - 첫 기록 때 생성하며 이후에는 같은 폴더에 이어서 저장합니다. `redball`은 별도 데이터셋으로 유지합니다.
@@ -79,7 +79,7 @@ Dataset Desk는 두 라이브 영상을 함께 보여주고, Rerun도 두 영상
 - `uv tool install git+https://github.com/huggingface/leLab.git` 설치가 필요합니다. Dataset Desk는 설치된 leLab의 읽기 전용 `episode_media.py`를 불러와 v3 데이터셋의 영상 구간을 해석합니다. 실행·녹화는 기존 `~/lerobot/.venv` 환경을 사용합니다. leLab을 지우면 이 미디어 모듈도 없어지므로 뷰어가 시작하지 않습니다.
 - 기본 Rerun 프로그램을 띄울 WSLg가 필요합니다. 현재 WSL에서는 CPU 렌더링 경고가 발생합니다. 표시 메모리는 128MB로 제한합니다.
 - Windows `.camera-tools`에도 pyzmq가 필요합니다.
-- 기본 저장 위치 `/home/user/.cache/huggingface/lerobot/se4nchoi/messi`와 캘리브레이션 ID `follower`, `leader`가 필요합니다. 카메라 이름은 `follower_cam`, 640×480, 30fps입니다.
+- 기본 저장 위치 `/home/user/.cache/huggingface/lerobot/chaern/messi`와 캘리브레이션 ID `follower`, `leader`가 필요합니다. 카메라 이름은 `follower_cam`, 640×480, 30fps입니다.
 - 관절 단위를 기존 Studio 데이터와 맞추기 위해 양쪽 `use_degrees=false`를 유지합니다.
 - 추종은 LeRobot 기본값을 사용합니다. 별도의 `max_relative_target` 제한은 제거했습니다. 시작 전 두 팔 자세를 비슷하게 맞추세요.
 - 카메라만 교재의 V4L2 대신 Windows MJPEG → ZMQ를 사용합니다. NAT에서는 가상 게이트웨이, mirrored에서는 127.0.0.1을 자동 선택합니다.
@@ -113,7 +113,7 @@ Rerun의 .rrd 저장 버튼은 시각화 로그 저장이며 LeRobot 데이터�
 
 ### 저장된 에피소드 보기
 
-프로젝트 루트의 **`windows/Start-Dataset-Viewer.cmd`**를 더블클릭하면 에피소드 목록을 웹에서 선택할 수 있습니다. `windows/View-Episodes.cmd`는 이전 방식으로 최근 에피소드를 바로 Rerun에 여는 실행 파일입니다. 웹 화면의 `Rerun에서 보기` 버튼은 선택한 에피소드를 엽니다. 현재 기본 녹화 데이터셋은 `se4nchoi/messi`입니다. 첫 에피소드를 저장하면 목록에 나타납니다. 기존 `redball`도 계속 조회할 수 있습니다.
+프로젝트 루트의 **`windows/Start-Dataset-Viewer.cmd`**를 더블클릭하면 에피소드 목록을 웹에서 선택할 수 있습니다. `windows/View-Episodes.cmd`는 이전 방식으로 최근 에피소드를 바로 Rerun에 여는 실행 파일입니다. 웹 화면의 `Rerun에서 보기` 버튼은 선택한 에피소드를 엽니다. 현재 기본 녹화 데이터셋은 `chaern/messi`입니다. 첫 에피소드를 저장하면 목록에 나타납니다. 기존 `redball`도 계속 조회할 수 있습니다.
 
 Rerun 왼쪽 Sources에서 `se4nchoi/redball/episode_24` 같은 저장 에피소드 소스를 선택하고 하단 시간축으로 재생·탐색합니다. 라이브 영상은 `recording` 소스를 선택하고 시간축을 최신 시점으로 이동합니다.
 

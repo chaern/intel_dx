@@ -2,7 +2,7 @@
 import math
 import re
 
-DEFAULTS = dict(repo='se4nchoi/messi', steps=10000, batch_size=4, num_workers=2,
+DEFAULTS = dict(repo='chaern/messi', steps=10000, batch_size=4, num_workers=2,
                 learning_rate=0.0001, warmup_steps=1000, eval_split=0.2,
                 save_freq=1000, seed=1000)
 

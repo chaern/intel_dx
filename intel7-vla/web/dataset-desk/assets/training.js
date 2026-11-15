@@ -13,7 +13,7 @@
   }
   async function loadDatasets() {
     const rows = await request('datasets');
-    const previous = el('trainingRepo').value || el('datasets')?.value || 'se4nchoi/messi';
+    const previous = el('trainingRepo').value || el('datasets')?.value || 'chaern/messi';
     el('trainingRepo').replaceChildren(...rows.map(r => {
       const option = new Option(r.repo,r.repo);
       option.dataset.episodes=r.episodes;option.dataset.frames=r.frames;return option;

@@ -78,7 +78,7 @@ cd /mnt/c/Users/<사용자>/intel7-vla
 # 서버가 이미 실행 중이면 중복 실행하지 마세요.
 
 ~/lerobot/.venv/bin/python wsl/train.py --help
-~/lerobot/.venv/bin/python wsl/train.py --repo se4nchoi/messi --steps 20000 --batch-size 4
+~/lerobot/.venv/bin/python wsl/train.py --repo chaern/messi --steps 20000 --batch-size 4
 ```
 
 학습 CLI는 웹과 같은 기본 10,000스텝·중복 차단·스냅샷 검증을 사용합니다.

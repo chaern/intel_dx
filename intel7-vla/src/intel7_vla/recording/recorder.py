@@ -31,11 +31,11 @@ def blueprint():
 
 
 class Recorder:
-    def __init__(self, demo=False, dataset_root=None, teleoperate=False, repo_id='se4nchoi/messi', task='Pick up the red ball, identify the open lane to the left or right of the pickup location, and roll or shoot the ball between the two cones to score a goal.'):
+    def __init__(self, demo=False, dataset_root=None, teleoperate=False, repo_id='chaern/messi', task='Pick up the red ball, identify the open lane to the left or right of the pickup location, and roll or shoot the ball between the two cones to score a goal.'):
         self.demo = demo
         self.teleoperate = teleoperate
         self.repo_id, self.task = repo_id, task
-        self.root = dataset_root or Path.home() / '.cache/huggingface/lerobot/se4nchoi/messi'
+        self.root = dataset_root or Path.home() / '.cache/huggingface/lerobot/chaern/messi'
         self.lock, self.commands, self.quit = Lock(), Queue(), Event()
         self.viewer_frames, self.viewer_stop = Queue(maxsize=1), Event()
         self.data = dict(app='lerobot-rerun-recorder',state='connecting', label=LABELS['connecting'], frames=0, elapsed=0.,

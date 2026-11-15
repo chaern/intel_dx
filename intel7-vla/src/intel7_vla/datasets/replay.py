@@ -13,8 +13,8 @@ import pyarrow.parquet as pq
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--episode',type=int)
-    parser.add_argument('--root',type=Path,default=Path.home()/'.cache/huggingface/lerobot/se4nchoi/messi')
-    parser.add_argument('--repo-id',default='se4nchoi/messi')
+    parser.add_argument('--root',type=Path,default=Path.home()/'.cache/huggingface/lerobot/chaern/messi')
+    parser.add_argument('--repo-id',default='chaern/messi')
     args=parser.parse_args()
     root=args.root
     closed=[]

@@ -28,7 +28,7 @@ export PATH="$HOME/.local/bin:$PATH"
 PROJECT=/mnt/c/Users/<사용자>/intel7-vla
 FOLLOWER=/dev/serial/by-id/usb-1a86_USB_Single_Serial_5B90150163-if00
 LEADER=/dev/serial/by-id/usb-1a86_USB_Single_Serial_5B90149145-if00
-DATA=/home/user/.cache/huggingface/lerobot/se4nchoi/messi
+DATA=/home/user/.cache/huggingface/lerobot/chaern/messi
 RUN=/home/user/vla-training/runs/messi-smolvla-20261023-143728
 MODEL=/home/user/vla-training/runs/messi-smolvla-20261023-153438-3c5ed1/output/checkpoints/last/pretrained_model
 TASK='Pick up the red ball, identify the open lane to the left or right of the pickup location, and roll or shoot the ball between the two cones to score a goal.'
@@ -43,7 +43,7 @@ export LEROBOT_RERUN_MEMORY_LIMIT=128MB
 | Leader | `so101_leader`, 보정 ID `leader` |
 | 관절 단위 | 두 팔 모두 `use_degrees=false` |
 | 카메라 | `follower_cam`, `field_cam`; ZMQ 5555/5556; 640×480; 30fps |
-| 데이터셋 | `se4nchoi/messi`; 위 `$DATA` |
+| 데이터셋 | `chaern/messi`; 위 `$DATA` |
 | 모델 | 위 `$MODEL`; 완료된 두 번째 학습의 10,000스텝 결과 |
 
 `camera1` 등으로 카메라 이름을 바꾸면 학습 모델 입력과 어긋납니다. `redball`은 다른 데이터셋입니다. 새 모델 학습 후에는 `$MODEL` 및 rollout 스크립트의 경로를 갱신해야 합니다.
@@ -95,7 +95,7 @@ bash "$PROJECT/wsl/record.sh" --check
 bash "$PROJECT/wsl/record.sh"
 ```
 
-이 실행 파일에는 카메라 2대, 두 팔, task, `se4nchoi/messi`, 30fps, Hub 업로드 끄기가 설정돼 있습니다. 기존 데이터가 있으면 이어 저장합니다. 기본값은 에피소드 50개, 회당 60초, reset 60초입니다. 웹 녹화와 동시에 실행하지 마세요.
+이 실행 파일에는 카메라 2대, 두 팔, task, `chaern/messi`, 30fps, Hub 업로드 끄기가 설정돼 있습니다. 기존 데이터가 있으면 이어 저장합니다. 기본값은 에피소드 50개, 회당 60초, reset 60초입니다. 웹 녹화와 동시에 실행하지 마세요.
 
 ## 5. 영상·관절값 확인 — dataset-viz
 
@@ -112,7 +112,7 @@ bash "$PROJECT/wsl/view-episodes.sh" 0
 원본 데이터셋이 완전히 닫힌 상태에서 직접 실행할 수도 있습니다.
 
 ```bash
-lerobot-dataset-viz --repo-id se4nchoi/messi --root "$DATA" \
+lerobot-dataset-viz --repo-id chaern/messi --root "$DATA" \
   --episode-index 0 --num-workers 0 --batch-size 4 \
   --display-compressed-images
 ```
@@ -122,17 +122,17 @@ lerobot-dataset-viz --repo-id se4nchoi/messi --root "$DATA" \
 데이터 개수와 feature 확인:
 
 ```bash
-lerobot-edit-dataset --repo_id=se4nchoi/messi --root="$DATA" \
+lerobot-edit-dataset --repo_id=chaern/messi --root="$DATA" \
   --operation.type=info --operation.show_features=true
 ```
 
 예를 들어 에피소드 2가 실패한 시연일 때, 이를 제외한 **새 데이터셋**을 만듭니다. 실제 제외할 번호로 바꿔 사용하세요.
 
 ```bash
-lerobot-edit-dataset --repo_id=se4nchoi/messi --root="$DATA" \
+lerobot-edit-dataset --repo_id=chaern/messi --root="$DATA" \
   --operation.type=delete_episodes --operation.episode_indices='[2]' \
-  --new_repo_id=se4nchoi/messi_clean \
-  --new_root=/home/user/.cache/huggingface/lerobot/se4nchoi/messi_clean \
+  --new_repo_id=chaern/messi_clean \
+  --new_root=/home/user/.cache/huggingface/lerobot/chaern/messi_clean \
   --push_to_hub=false
 ```
 
@@ -153,7 +153,7 @@ CLI로 첫 실험과 같은 구성을 새로 학습하려면 아래처럼 실행
 OUT="/home/user/vla-training/manual-messi-$(date +%Y%m%d-%H%M%S)"
 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
 python "$PROJECT/wsl/train_bf16.py" \
-  --dataset.repo_id=se4nchoi/messi --dataset.root="$RUN/dataset" \
+  --dataset.repo_id=chaern/messi --dataset.root="$RUN/dataset" \
   --dataset.video_backend=pyav --dataset.eval_split=0.2 \
   --policy.path="$RUN/base-two-cameras" \
   --policy.device=cuda --policy.use_amp=true --policy.push_to_hub=false \
@@ -192,7 +192,7 @@ python "$PROJECT/wsl/train_bf16.py" \
 lerobot-replay \
   --robot.type=so101_follower --robot.port="$FOLLOWER" \
   --robot.id=follower --robot.use_degrees=false \
-  --dataset.repo_id=se4nchoi/messi --dataset.root="$DATA" \
+  --dataset.repo_id=chaern/messi --dataset.root="$DATA" \
   --dataset.episode=0 --dataset.fps=30 --play_sounds=false
 ```
 

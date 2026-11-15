@@ -90,7 +90,7 @@ class TrainingManager:
             config = read_json(output/'train_config.json')
         options = data.get('options', {})
         if not options and config:
-            options = dict(repo=config.get('dataset',{}).get('repo_id','se4nchoi/messi'),
+            options = dict(repo=config.get('dataset',{}).get('repo_id','chaern/messi'),
                 steps=config.get('steps',data.get('steps',0)),batch_size=config.get('batch_size'),
                 num_workers=config.get('num_workers'),seed=config.get('seed'),
                 eval_split=config.get('dataset',{}).get('eval_split',0),save_freq=config.get('save_freq'),
@@ -121,7 +121,7 @@ class TrainingManager:
             error = next((line for line in reversed(content.splitlines()) if re.search(r'Error:|Exception:',line)),
                          '학습 프로세스가 종료됐습니다. 로그와 저장된 체크포인트를 확인해 주세요.')
         return dict(id=folder.name, state=state, active=alive, created=created,
-            repo=options.get('repo',data.get('repo',config.get('dataset',{}).get('repo_id','se4nchoi/messi'))),
+            repo=options.get('repo',data.get('repo',config.get('dataset',{}).get('repo_id','chaern/messi'))),
             model='SmolVLA', options=options or dict(steps=total,batch_size=data.get('batch_size',config.get('batch_size'))),
             total_steps=total, step=progress['step'],
             percent=min(100,round(100*progress['step']/total,1)) if total else 0,

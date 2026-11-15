@@ -15,15 +15,15 @@ class Element {
 async function main(){
   const html=fs.readFileSync(__dirname+'/../web/dataset-desk/index.html','utf8'),elements={};
   for(const match of html.matchAll(/\bid="([^"]+)"/g))elements[match[1]]=new Element(match[1]);
-  const values={trainingRepo:'se4nchoi/messi',trainingSteps:'10000',trainingBatch:'4',trainingLR:'0.0001',trainingWarmup:'1000',trainingSplit:'0.2',trainingSave:'1000',trainingWorkers:'2',trainingSeed:'1000',datasets:'se4nchoi/messi'};
+  const values={trainingRepo:'chaern/messi',trainingSteps:'10000',trainingBatch:'4',trainingLR:'0.0001',trainingWarmup:'1000',trainingSplit:'0.2',trainingSave:'1000',trainingWorkers:'2',trainingSeed:'1000',datasets:'chaern/messi'};
   for(const [key,value] of Object.entries(values))elements[key].value=value;
   elements.trainingAutoScroll.checked=true;
   const get=id=>{assert(elements[id],`Missing element ${id}`);return elements[id]};
-  const completed={id:'initial',state:'completed',repo:'se4nchoi/messi',model:'SmolVLA',episodes:10,frames:7840,step:2000,total_steps:2000,percent:100,loss:.11,eval_loss:.098,
+  const completed={id:'initial',state:'completed',repo:'chaern/messi',model:'SmolVLA',episodes:10,frames:7840,step:2000,total_steps:2000,percent:100,loss:.11,eval_loss:.098,
     options:{batch_size:4},losses:[{step:10,loss:.5},{step:2000,loss:.11}],evaluations:[{step:2000,loss:.098}],log:'Training complete',checkpoints:[{step:2000,path:'/local/model',bytes:906712520}]};
   let current=completed,busy=false,rejectStart=true,startCalls=[],interval;
   const fetch=async(url,options)=>{
-    if(url==='/api/datasets')return {ok:true,json:async()=>[{repo:'se4nchoi/messi',episodes:11,frames:8912}]};
+    if(url==='/api/datasets')return {ok:true,json:async()=>[{repo:'chaern/messi',episodes:11,frames:8912}]};
     if(url==='/api/training-start'){
       startCalls.push(JSON.parse(options.body));
       assert.equal(options.headers['X-LeRobot-Control'],'local');
