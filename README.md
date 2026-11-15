@@ -32,3 +32,9 @@
 시연을 11개로 늘려 10,000스텝 학습을 완료하고 체크포인트를 실행 설정에 연결했습니다. 공통 조건의 평가 수치와 반복 실물 시험 결과가 없어 두 모델의 성능 차이는 확인하지 못했습니다.
 
 실습 결과 Markdown에 정리된 녹화·학습·구동 기록과 검증 결과를 바탕으로 작성했습니다.
+
+## 팀 프로젝트 소스
+
+[se4nchoi/intel7-vla](https://github.com/se4nchoi/intel7-vla)의 팀 프로젝트 원본을 [intel7-vla/](intel7-vla/)에 커밋 이력과 함께 가져왔습니다. SO-101 시연 수집, Windows–WSL 카메라 브리지, Dataset Desk, ACT·SmolVLA 학습 실험 코드와 문서가 들어 있습니다.
+
+[팀 프로젝트 README](intel7-vla/README.md) · [설치 안내](intel7-vla/docs/SETUP.ko.md)
