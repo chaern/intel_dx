@@ -35,6 +35,6 @@
 
 ## 팀 프로젝트 소스
 
-[se4nchoi/intel7-vla](https://github.com/se4nchoi/intel7-vla)의 팀 프로젝트 원본을 [intel7-vla/](intel7-vla/)에 커밋 이력과 함께 가져왔습니다. SO-101 시연 수집, Windows–WSL 카메라 브리지, Dataset Desk, ACT·SmolVLA 학습 실험 코드와 문서가 들어 있습니다.
+팀원들과 함께 진행한 LeRobot 프로젝트입니다. [intel7-vla/](intel7-vla/)에 팀 코드와 문서를 정리했습니다. SO-101 시연 수집, Windows–WSL 카메라 브리지, Dataset Desk, ACT·SmolVLA 학습 실험 코드와 문서가 들어 있습니다.
 
 [팀 프로젝트 README](intel7-vla/README.md) · [설치 안내](intel7-vla/docs/SETUP.ko.md)
