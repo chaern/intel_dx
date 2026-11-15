@@ -1,0 +1,14 @@
+x0 on
+x1 off
+
+x5~8
+bool0~3
+green 0100(bool3-0)
+metal 0111(bool3-0)
+
+y20 conveyor
+y28 emitter
+
+push back x2
+push front x3
+pusher y25
